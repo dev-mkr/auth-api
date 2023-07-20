@@ -181,7 +181,6 @@ async function logout(req, res) {
 
 async function refresh(req, res) {
   const cookies = req.cookies;
-  console.log(cookies.refresh_token);
   if (!cookies.refresh_token) return res.sendStatus(401);
 
   const refreshToken = cookies.refresh_token;
