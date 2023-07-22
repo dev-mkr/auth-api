@@ -198,7 +198,15 @@ async function refresh(req, res) {
       { expiresIn: "1800s" }
     );
 
-    res.json({ access_token: accessToken });
+    res.json({
+      access_token: accessToken,
+      user: {
+        id: user.id,
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name,
+      },
+    });
   });
 }
 
