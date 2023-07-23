@@ -5,6 +5,7 @@ const origins = [
   "http://192.168.1.7:5173",
   "http://localhost:5173",
   "http://192.168.1.9:5173",
+  "https://reactjs-admin-dashboard.pages.dev/",
 ];
 
 module.exports = origins;
