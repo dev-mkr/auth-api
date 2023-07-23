@@ -8,4 +8,4 @@ To get started with this API, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Install the required dependencies by running `npm install`.
-3. Create a `.env` file in the root directory of the project and add the following environment variables:
+3. Create a `.env` file in the root directory of the project and add your environment variables:
