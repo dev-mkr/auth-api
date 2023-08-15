@@ -86,9 +86,7 @@ async function register(req, res) {
     });
   } catch (error) {
     if (error.code === 11000 && error.keyPattern.email) {
-      return res
-        .status(409)
-        .json({ message: "Email address already registered" });
+      return res.status(409).json({ message: "Email address already registered" });
     }
     return res.status(400).json({ message: "Could not register" });
   }
@@ -96,20 +94,15 @@ async function register(req, res) {
 async function login(req, res) {
   const { email, password } = req.body;
 
-  if (!email || !password)
-    return res.status(422).json({ message: "Invalid fields" });
+  if (!email || !password) return res.status(422).json({ message: "Invalid fields" });
 
   const user = await User.findOne({ email }).exec();
 
-  if (!user)
-    return res
-      .status(404)
-      .json({ message: "User not found please register first" });
+  if (!user) return res.status(404).json({ message: "User not found please register first" });
 
   const match = await bcrypt.compare(password, user.password);
 
-  if (!match)
-    return res.status(401).json({ message: "Email or password is incorrect" });
+  if (!match) return res.status(401).json({ message: "Email or password is incorrect" });
 
   const accessToken = jwt.sign(
     {
@@ -192,11 +185,9 @@ async function refresh(req, res) {
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
     if (err || user.id !== decoded.id) return res.sendStatus(403);
 
-    const accessToken = jwt.sign(
-      { id: decoded.id },
-      process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "1800s" }
-    );
+    const accessToken = jwt.sign({ id: decoded.id }, process.env.ACCESS_TOKEN_SECRET, {
+      expiresIn: "1800s",
+    });
 
     res.json({
       access_token: accessToken,

@@ -41,6 +41,7 @@ app.use(errorHandlerMiddleware);
 
 // Routes
 app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/summary", require("./routes/api/summary"));
 
 app.all("*", (req, res) => {
   res.status(404);
