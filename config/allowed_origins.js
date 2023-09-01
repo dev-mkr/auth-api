@@ -6,6 +6,7 @@ const origins = [
   "http://localhost:5173",
   "http://192.168.1.9:5173",
   "https://reactjs-admin-dashboard.pages.dev",
+  "https://react-ts-admin-dashboard.netlify.app",
 ];
 
 module.exports = origins;
